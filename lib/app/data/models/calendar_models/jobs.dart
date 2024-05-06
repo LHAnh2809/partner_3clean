@@ -16,6 +16,8 @@ class Jobs {
   String? workingDay;
   String? nameUser;
   String? phoneNumber;
+  String? imageU;
+  String? idU;
 
   Jobs(
       {this.idID,
@@ -34,10 +36,13 @@ class Jobs {
       this.price,
       this.workingDay,
       this.nameUser,
-      this.phoneNumber});
+      this.idU,
+      this.phoneNumber,
+      this.imageU});
 
   Jobs.fromJson(Map<String, dynamic> json) {
     idID = json['idID'];
+    idU = json['idU'];
     lat = json['lat'];
     lng = json['lng'];
     location = json['location'];
@@ -54,12 +59,14 @@ class Jobs {
     workingDay = json['workingDay'];
     nameUser = json['name_user'];
     phoneNumber = json['phoneNumber'];
+    imageU = json['imageU'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['idID'] = this.idID;
     data['lat'] = this.lat;
+    data['idU'] = this.idU;
     data['lng'] = this.lng;
     data['location'] = this.location;
     data['location2'] = this.location2;
@@ -75,6 +82,7 @@ class Jobs {
     data['name_user'] = this.nameUser;
     data['phoneNumber'] = this.phoneNumber;
     data['payment_methods'] = this.payment_methods;
+    data['imageU'] = this.imageU;
     return data;
   }
 }

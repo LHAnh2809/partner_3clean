@@ -215,7 +215,7 @@ class NewJobWidget extends StatelessWidget {
                 SizedBox(width: 0.0, height: 12.h),
                 JobDetailsWidget(
                   image: AppImages.iconLocation2,
-                  text: "${model!.location}",
+                  text: "${model!.location2}, ${model!.location}",
                 ),
                 if (model!.employeeNotes != "")
                   Column(

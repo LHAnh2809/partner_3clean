@@ -21,6 +21,41 @@ class Utils {
     }
   }
 
+  static String formatDateTimeString(String dateTimeString) {
+    // Chuyển đổi chuỗi sang đối tượng DateTime
+    DateTime dateTime = DateTime.parse(dateTimeString);
+
+    // Định dạng lại theo yêu cầu
+    // ignore: unnecessary_string_interpolations
+    String formattedDateTime = "${_formatTime(dateTime)}";
+
+    return formattedDateTime;
+  }
+
+  static String _formatTime(DateTime dateTime) {
+    // Lấy giờ và phút từ DateTime
+    String day = _addLeadingZero(dateTime.day);
+    String month = _addLeadingZero(dateTime.month);
+    String hour = _addLeadingZero(dateTime.hour);
+    String minute = _addLeadingZero(dateTime.minute);
+
+    return "$day/$month/${dateTime.year} - $hour:$minute";
+  }
+
+  static String _addLeadingZero(int number) {
+    // Thêm số 0 đằng trước nếu số nhỏ hơn 10
+    return number < 10 ? "0$number" : "$number";
+  }
+
+  static void makePhoneCall(String phoneNumber) async {
+    String telScheme = 'tel:$phoneNumber';
+    if (await canLaunch(telScheme)) {
+      await launch(telScheme);
+    } else {
+      throw 'Could not launch $telScheme';
+    }
+  }
+
   static Future<String> uploadFileToFirebaseStorage(
       String path, String filePath, String name) async {
     try {

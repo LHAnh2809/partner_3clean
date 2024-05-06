@@ -5,8 +5,6 @@ import 'package:partner_3clean/app/modules/calendar/controller/calendar_controll
 import 'package:partner_3clean/app/modules/widgets/custom_empty_widget.dart';
 
 import '../../notification/exports.dart';
-import '../../widgets/button_widget.dart';
-import '../../widgets/job_details_widget.dart';
 import 'widgets/calender_page.dart';
 
 class CalenderView extends GetView<CalendarsController> {

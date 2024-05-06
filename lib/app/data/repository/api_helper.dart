@@ -16,6 +16,8 @@ abstract class ApiHelper {
   Future<List<Map<String, dynamic>>> vietMapAutoComplete(
       {required String location});
 
+  Future<Map<String, dynamic>> get3cleanWallet();
+
   Future<List<Map<String, dynamic>>> getPlaceVietMap({required String refId});
 
   Future<List<Map<String, dynamic>>> getReverseVietMap(
@@ -118,6 +120,10 @@ abstract class ApiHelper {
       {required double lat, required double lng});
 
   Future<Map<String, dynamic>> postAcceptJob({required String id});
+
   Future<Map<String, dynamic>> getCalendar();
+
   Future<Map<String, dynamic>> putComplete({required String id});
+
+  Future<Map<String, dynamic>> postBoViec({required String idID});
 }

@@ -6,6 +6,7 @@ import 'package:partner_3clean/app/modules/calendar/view/widgets/button_circle_w
 
 import '../../../../common/util/exports.dart';
 import '../../../../data/models/calendar_models/jobs.dart';
+import '../../../chat/view/chat_view.dart';
 import '../../../widgets/button_widget.dart';
 import '../../../widgets/custom_appbar_widget.dart';
 import '../../../widgets/custom_svg.dart';
@@ -325,13 +326,24 @@ class _DetailedWorkSchedulePageState extends State<DetailedWorkSchedulePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ButtonCircleWidge(
-                        onTap: () {},
+                        onTap: () {
+                          Get.to(() => ChatView(
+                                name: widget.model.nameUser.toString(),
+                                image: widget.model.imageU.toString(),
+                                id: widget.model.idU.toString(),
+                                numberPhone:
+                                    widget.model.phoneNumber.toString(),
+                              ));
+                        },
                         images: AppImages.iconNote,
                         text: 'Chát ngay',
                       ),
                       SizedBox(width: 16.w, height: 0.0),
                       ButtonCircleWidge(
-                        onTap: () {},
+                        onTap: () {
+                          Utils.makePhoneCall(
+                              widget.model.phoneNumber.toString());
+                        },
                         images: AppImages.iconsPhoneFill,
                         text: 'Gọi điện',
                       ),
@@ -379,7 +391,7 @@ class _DetailedWorkSchedulePageState extends State<DetailedWorkSchedulePage> {
       bottomNavigationBar: Container(
         color: AppColors.white,
         padding: const EdgeInsets.only(left: 16, right: 16, top: 16).r,
-        height: 106.h,
+        height: widget.controller.orderStatuss == 4 ? 0.h : 106.h,
         child: Obx(
           () => Column(
             children: [
@@ -398,15 +410,6 @@ class _DetailedWorkSchedulePageState extends State<DetailedWorkSchedulePage> {
               // if (Utils.ssHou(
               //         widget.model.workTime.toString(), widget.model.workingDay.toString()) ==
               //     false)
-              if (widget.controller.orderStatuss == 4)
-                ButtonWidget(
-                  onTap: () {},
-                  text: 'Hoàn tất',
-                  textStyle: AppTextStyle.textButtonStyle
-                      .copyWith(color: AppColors.kGray400Color),
-                  height: 48.h,
-                  colorBackGroud: AppColors.kGray100Color,
-                ),
             ],
           ),
         ),

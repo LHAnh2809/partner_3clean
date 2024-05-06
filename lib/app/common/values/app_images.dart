@@ -114,8 +114,9 @@ class AppImages {
   static const String iconErrorWarningLine =
       'assets/icons/error-warning-line.svg';
   static const String iconCalendarLine = 'assets/icons/calendar-line.svg';
-  static const String iconCalendarTodoFill= 'assets/icons/calendar-todo-fill.svg';
-  static const String iconPagesFill= 'assets/icons/pages-fill.svg';
+  static const String iconCalendarTodoFill =
+      'assets/icons/calendar-todo-fill.svg';
+  static const String iconPagesFill = 'assets/icons/pages-fill.svg';
   static const String iconTimeLine = 'assets/icons/time-line.svg';
   static const String iconInformationFill = 'assets/icons/information-fill.svg';
   static const String iconRadioButtonChecked =
@@ -125,7 +126,8 @@ class AppImages {
   static const String iconVipCrown2 = 'assets/icons/vip-crown-2-fill.svg';
   static const String iconDog = 'assets/icons/dog.svg';
   static const String iconMaymet = 'assets/icons/maymet.svg';
-  static const String iconMoneyDollarCircle = 'assets/icons/money-dollar-circle-fill.svg';
+  static const String iconMoneyDollarCircle =
+      'assets/icons/money-dollar-circle-fill.svg';
   static const String iconMoneyDollarBox =
       'assets/icons/money-dollar-box-fill.svg';
   static const String iconPriceTag3 = 'assets/icons/price-tag-3.svg';
@@ -145,4 +147,8 @@ class AppImages {
   static const String iconsUserFill = 'assets/icons/user-fill.svg';
   static const String iconsEqualizerFill = 'assets/icons/equalizer-fill.svg';
   static const String iconsMapPin4Fill = 'assets/icons/map-pin-4-fill.svg';
+  static const String iconsMoneyDollarCircleFill =
+      'assets/icons/money-dollar-circle-fill.svg';
+  static const String iconsWalletPlusFill = 'assets/icons/wallet-plus-fill.svg';
+  static const String iconsSendPlaneFill = 'assets/icons/send-plane-fill.svg';
 }

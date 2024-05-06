@@ -56,9 +56,8 @@ class _ConfirmedDescriptionWidgetState
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(
-                          left: 16, top: 16, right: 16)
-                      .r,
+                  padding:
+                      const EdgeInsets.only(left: 16, top: 16, right: 16).r,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -67,8 +66,8 @@ class _ConfirmedDescriptionWidgetState
                         child: Text(
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          Utils.getLabel(int.parse(
-                              widget.model!.label.toString())),
+                          Utils.getLabel(
+                              int.parse(widget.model!.label.toString())),
                           style: AppTextStyle.lableBodyStyle,
                         ),
                       ),
@@ -76,9 +75,7 @@ class _ConfirmedDescriptionWidgetState
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.only(left: 16, top: 8, right: 16)
-                          .r,
+                  padding: const EdgeInsets.only(left: 16, top: 8, right: 16).r,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -95,8 +92,7 @@ class _ConfirmedDescriptionWidgetState
                           Text(
                             overflow: TextOverflow.ellipsis,
                             "${Utils.getCityFromAddress(widget.model!.location.toString())} • Khoảng cách ${widget.km.toString()} km",
-                            style:
-                                AppTextStyle.textxsmallStyle.copyWith(
+                            style: AppTextStyle.textxsmallStyle.copyWith(
                               color: AppColors.kGray500Color,
                             ),
                           ),
@@ -105,17 +101,14 @@ class _ConfirmedDescriptionWidgetState
                       ButtonWidget(
                         onTap: () {
                           Utils.openMap(
-                              double.parse(
-                                  widget.model!.lat.toString()),
-                              double.parse(
-                                  widget.model!.lng.toString()));
+                              double.parse(widget.model!.lat.toString()),
+                              double.parse(widget.model!.lng.toString()));
                         },
                         widget: Row(
                           children: [
                             Text(
                               "Xem vị trí",
-                              style: AppTextStyle.textsmallStyle12
-                                  .copyWith(
+                              style: AppTextStyle.textsmallStyle12.copyWith(
                                 color: AppColors.kPurplePurpleColor,
                               ),
                             ),
@@ -133,9 +126,7 @@ class _ConfirmedDescriptionWidgetState
                 Container(
                   width: 343.w,
                   height: 60.h,
-                  margin: const EdgeInsets.only(
-                          top: 16, left: 16, right: 16)
-                      .r,
+                  margin: const EdgeInsets.only(top: 16, left: 16, right: 16).r,
                   padding: const EdgeInsets.only(left: 8, right: 8).r,
                   decoration: BoxDecoration(
                     color: AppColors.kGray050Color,
@@ -146,24 +137,20 @@ class _ConfirmedDescriptionWidgetState
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
-                        padding:
-                            const EdgeInsets.only(top: 8, bottom: 8).r,
+                        padding: const EdgeInsets.only(top: 8, bottom: 8).r,
                         child: Column(
                           children: [
                             Text(
                               'Làm trong',
                               style: AppTextStyle.textsmallStyle12
-                                  .copyWith(
-                                      color: AppColors.kGray500Color),
+                                  .copyWith(color: AppColors.kGray500Color),
                             ),
                             Flexible(
                               child: Text(
                                 Utils.getHour(
                                     widget.model!.workTime.toString()),
                                 style: AppTextStyle.textButtonStyle
-                                    .copyWith(
-                                        color:
-                                            AppColors.kGray1000Color),
+                                    .copyWith(color: AppColors.kGray1000Color),
                               ),
                             ),
                           ],
@@ -174,23 +161,19 @@ class _ConfirmedDescriptionWidgetState
                         color: AppColors.kGray200Color,
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(top: 8, bottom: 8).r,
+                        padding: const EdgeInsets.only(top: 8, bottom: 8).r,
                         child: Column(
                           children: [
                             Text(
                               'Số tiền',
                               style: AppTextStyle.textsmallStyle12
-                                  .copyWith(
-                                      color: AppColors.kGray500Color),
+                                  .copyWith(color: AppColors.kGray500Color),
                             ),
                             Flexible(
                               child: Text(
                                 '${Utils.formatNumber(int.parse(widget.model!.price.toString()))}đ',
                                 style: AppTextStyle.textButtonStyle
-                                    .copyWith(
-                                        color:
-                                            AppColors.kGray1000Color),
+                                    .copyWith(color: AppColors.kGray1000Color),
                               ),
                             ),
                           ],
@@ -218,8 +201,7 @@ class _ConfirmedDescriptionWidgetState
                           Expanded(
                             child: RichText(
                               text: TextSpan(
-                                style: AppTextStyle.textsmallStyle
-                                    .copyWith(
+                                style: AppTextStyle.textsmallStyle.copyWith(
                                   color: AppColors.kGray1000Color,
                                 ),
                                 children: <TextSpan>[

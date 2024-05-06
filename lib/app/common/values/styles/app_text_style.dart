@@ -62,6 +62,11 @@ class AppTextStyle {
       fontSize: Dimens.fontSize44,
       fontFamily: "SFProText");
 
+  static TextStyle titleBodyStyle28 = TextStyle(
+      color: AppColors.kGray1000Color,
+      fontWeight: FontWeight.w600,
+      fontSize: Dimens.fontSize28,
+      fontFamily: "SFProText");
   static TextStyle titleBodyStyle = TextStyle(
       color: AppColors.kGray1000Color,
       fontWeight: FontWeight.w600,

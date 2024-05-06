@@ -932,4 +932,51 @@ class ApiHelperImpl implements ApiHelper {
       }
     });
   }
+
+  @override
+  Future<Map<String, dynamic>> get3cleanWallet() async {
+    return await ApiErrorHandler.handleError(() async {
+      final url = '$apiUrl/partner/get-3clean-wallet/';
+      String? accessToken = Storage.getValue<String>('access_token');
+      final response = await http
+          .get(
+            Uri.parse(url),
+            headers: getHeaders(accessToken!),
+          )
+          .timeout(myTimeout);
+
+      if (response.statusCode == 200) {
+        final jsonResponse = json.decode(response.body);
+
+        return jsonResponse;
+      } else {
+        throw Exception('Sửa địa chỉ mặc định thất bại');
+      }
+    });
+  }
+
+  @override
+  Future<Map<String, dynamic>> postBoViec({required String idID}) async {
+    return await ApiErrorHandler.handleError(() async {
+
+      final url = '$apiUrl/partner/bo-cong-viec/?idID=$idID';
+
+      String? accessToken = Storage.getValue<String>('access_token');
+      
+      final response = await http
+          .post(
+            Uri.parse(url),
+            headers: getHeaders(accessToken!),
+          )
+          .timeout(myTimeout);
+
+      if (response.statusCode == 200) {
+        final jsonResponse = json.decode(response.body);
+
+        return jsonResponse;
+      } else {
+        throw Exception('Bỏ công việc thất bại');
+      }
+    });
+  }
 }

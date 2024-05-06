@@ -7,6 +7,7 @@ import 'package:partner_3clean/app/modules/widgets/button_widget.dart';
 
 import '../../../../../common/util/exports.dart';
 import '../../../../../data/models/wait_confirmation_models/wait_confirmation.dart';
+import '../../../../widgets/custom_appbar_widget.dart';
 import '../../../../widgets/custom_svg.dart';
 import '../../../../widgets/job_details_widget.dart';
 import '../../../controllers/wait_confirmation_controller.dart';
@@ -28,22 +29,8 @@ class _ConfirmDescriptionPageState extends State<ConfirmDescriptionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.kGray050Color,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: AppColors.white,
-        leading: ButtonWidget(
-          onTap: () {
-            Get.back();
-          },
-          widget: Icon(Icons.arrow_back_ios_rounded),
-        ),
-        title: Center(
-          child: Text(
-            'Chi tiết công việc',
-            style:
-                AppTextStyle.textButtonStyle.copyWith(color: AppColors.black),
-          ),
-        ),
+      appBar: CustomAppbarWidget(
+        title: 'Chi tiết công việc',
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

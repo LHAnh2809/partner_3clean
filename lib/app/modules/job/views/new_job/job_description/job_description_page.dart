@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:partner_3clean/app/modules/widgets/button_widget.dart';
 
 import '../../../../../common/util/exports.dart';
+import '../../../../../common/util/navigator.dart';
 import '../../../../../data/models/job_all_models/job_all.dart';
+import '../../../../widgets/custom_appbar_widget.dart';
 import '../../../../widgets/custom_svg.dart';
 import '../../../../widgets/job_details_widget.dart';
 import '../../../controllers/job_all_controller.dart';
@@ -28,16 +31,8 @@ class _JobDescriptionPageState extends State<JobDescriptionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.kGray050Color,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: AppColors.white,
-        title: Center(
-          child: Text(
-            'Chi tiết công việc',
-            style:
-                AppTextStyle.textButtonStyle.copyWith(color: AppColors.black),
-          ),
-        ),
+      appBar: CustomAppbarWidget(
+        title: 'Chi tiết công việc',
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -303,7 +298,8 @@ class _JobDescriptionPageState extends State<JobDescriptionPage> {
                               SizedBox(width: 0.0, height: 12.h),
                               JobDetailsWidget(
                                 image: AppImages.iconLocation2,
-                                text: "${widget.model!.location}",
+                                text:
+                                    "${widget.model!.location2}, ${widget.model!.location}",
                               ),
                               if (widget.model!.employeeNotes != "")
                                 Column(
@@ -407,7 +403,8 @@ class _JobDescriptionPageState extends State<JobDescriptionPage> {
                   child: ButtonWidget(
                     colorBackGroud: Colors.white,
                     onTap: () {
-                      Get.back();
+                      widget.controller
+                          .posttBoViec(widget.model!.id.toString());
                     },
                     text: 'Bỏ qua',
                     boder: true.obs,
@@ -418,7 +415,17 @@ class _JobDescriptionPageState extends State<JobDescriptionPage> {
                 SizedBox(width: 16.w, height: 0.0),
                 Expanded(
                   child: Obx(
-                    () => Column(
+                    () {
+                      var children = [
+                              ButtonWidget(
+                                onTap: () {
+                                  widget.controller.posttAcceptJob(
+                                      widget.model!.id.toString());
+                                },
+                                text: 'Nhận việc',
+                              ),
+                            ];
+                      return Column(
                       children: [
                         if (widget.controller.isChecked.value == false)
                           ButtonWidget(
@@ -429,15 +436,12 @@ class _JobDescriptionPageState extends State<JobDescriptionPage> {
                                 .copyWith(color: AppColors.kGray400Color),
                           ),
                         if (widget.controller.isChecked.value == true)
-                          ButtonWidget(
-                            onTap: () {
-                              widget.controller
-                                  .posttAcceptJob(widget.model!.id.toString());
-                            },
-                            text: 'Nhận việc',
-                          ),
+                          Column(
+                            children: children,
+                          )
                       ],
-                    ),
+                    );
+                    },
                   ),
                 ),
               ],
