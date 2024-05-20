@@ -19,6 +19,7 @@ class ApiHelperImpl implements ApiHelper {
       Map<String, dynamic> jobData = jsonDecode(json);
 
       String viewValue = jobData['IP'];
+      await Storage.saveValue('ip', viewValue);
       String apiUrll = 'http://$viewValue:8000/api/v1';
       await Storage.saveValue('apiUrl', apiUrll);
     } else {
@@ -958,11 +959,10 @@ class ApiHelperImpl implements ApiHelper {
   @override
   Future<Map<String, dynamic>> postBoViec({required String idID}) async {
     return await ApiErrorHandler.handleError(() async {
-
       final url = '$apiUrl/partner/bo-cong-viec/?idID=$idID';
 
       String? accessToken = Storage.getValue<String>('access_token');
-      
+
       final response = await http
           .post(
             Uri.parse(url),
@@ -974,6 +974,55 @@ class ApiHelperImpl implements ApiHelper {
         final jsonResponse = json.decode(response.body);
 
         return jsonResponse;
+      } else {
+        throw Exception('Bỏ công việc thất bại');
+      }
+    });
+  }
+
+  Future<Map<String, dynamic>> getCancelCompleteHistory() async {
+    return await ApiErrorHandler.handleError(() async {
+      final url = '$apiUrl/partner/lich-su-cong-viec/';
+      String? accessToken = Storage.getValue<String>('access_token');
+      final response = await http
+          .get(
+            Uri.parse(url),
+            headers: getHeaders(accessToken!),
+          )
+          .timeout(myTimeout);
+
+      if (response.statusCode == 200) {
+        final jsonResponse = json.decode(response.body);
+        return jsonResponse;
+      } else {
+        throw Exception('Lấy lịch sử hủy/hoàn thành thất bại');
+      }
+    });
+  }
+
+  @override
+  Future<Map<String, dynamic>> getStatistics({
+    required String startDate1,
+    required String endDate1,
+    required String startDate2,
+    required String endDate2,
+  }) async {
+    return await ApiErrorHandler.handleError(() async {
+      final url =
+          '$apiUrl/partner/statistics?start_date_1=$startDate1&end_date_1=$endDate1&start_date_2=$startDate2&end_date_2=$endDate2';
+
+      String? accessToken = Storage.getValue<String>('access_token');
+
+      final response = await http
+          .get(
+            Uri.parse(url),
+            headers: getHeaders(accessToken!),
+          )
+          .timeout(myTimeout);
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
+        return data;
       } else {
         throw Exception('Bỏ công việc thất bại');
       }

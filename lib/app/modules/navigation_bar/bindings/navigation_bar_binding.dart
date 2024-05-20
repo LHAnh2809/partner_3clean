@@ -7,6 +7,7 @@ import 'package:partner_3clean/app/modules/notification/controllers/notification
 import 'package:partner_3clean/app/modules/promotion/controllers/promotion_controller.dart';
 
 import '../../calendar/controller/calendar_controller.dart';
+import '../../calendar/controller/history_controller.dart';
 import '../../chat/view/controllers/chat_controller.dart';
 import '../../job/controllers/confirmed_controller.dart';
 import '../../job/controllers/job_all_controller.dart';

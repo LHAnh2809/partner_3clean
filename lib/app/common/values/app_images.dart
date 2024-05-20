@@ -103,6 +103,7 @@ class AppImages {
   static const String iconCompany = 'assets/icons/company.svg';
   static const String iconPromotion = 'assets/icons/promotion.svg';
   static const String iconArrowright = 'assets/icons/arrow-right-s-line.svg';
+  static const String iconFileListFill = 'assets/icons/file-list-3-fill.svg';
   static const String iconBookmark = 'assets/icons/bookmark.svg';
   static const String iconUserHeart = 'assets/icons/user-heart.svg';
   static const String iconUserAdd = 'assets/icons/user-add.svg';
@@ -130,6 +131,14 @@ class AppImages {
       'assets/icons/money-dollar-circle-fill.svg';
   static const String iconMoneyDollarBox =
       'assets/icons/money-dollar-box-fill.svg';
+  static const String iconThumbUpFill = 'assets/icons/thumb-up-fill.svg';
+  static const String iconThumbDownFill = 'assets/icons/thumb-down-fill.svg';
+  static const String iconMessage2Fill = 'assets/icons/message-2-fill.svg';
+  static const String iconCalendar2Line = 'assets/icons/calendar-2-line.svg';
+  static const String iconInformationLine = 'assets/icons/information-line.svg';
+  static const String iconUserUnfollowFill =
+      'assets/icons/user-unfollow-fill.svg';
+  static const String iconFeedbackFill = 'assets/icons/feedback-fill.svg';
   static const String iconPriceTag3 = 'assets/icons/price-tag-3.svg';
   static const String imageIllustration2 = 'assets/images/Illustration2.svg';
   static const String iconsPercent = 'assets/icons/percent-fill.svg';
@@ -151,4 +160,5 @@ class AppImages {
       'assets/icons/money-dollar-circle-fill.svg';
   static const String iconsWalletPlusFill = 'assets/icons/wallet-plus-fill.svg';
   static const String iconsSendPlaneFill = 'assets/icons/send-plane-fill.svg';
+  static const String iconsArrowLeftLine = 'assets/icons/arrow-left-s-line.svg';
 }

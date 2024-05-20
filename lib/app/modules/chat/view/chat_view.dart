@@ -24,7 +24,8 @@ class ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.put(ChatController());
+    final ChatController controller = Get.put(ChatController());
+
     return Scaffold(
         backgroundColor: AppColors.white,
         appBar: CustomAppbarWidget(
@@ -183,7 +184,6 @@ class ChatView extends StatelessWidget {
                       ),
                       obsNhapText: false,
                       hintText: 'Aa',
-                      maxLines: 4,
                       onChanged: (value) {
                         controller.textChat.value = value;
                       },
@@ -191,7 +191,7 @@ class ChatView extends StatelessWidget {
                   ),
                   Obx(() => controller.textChat.value != ""
                       ? ButtonWidget(
-                          onTap: () {},
+                          onTap: () { controller.sendMessage();},
                           widget: Container(
                             width: 32.w,
                             height: 32.h,

@@ -336,7 +336,7 @@ class _DetailedWorkSchedulePageState extends State<DetailedWorkSchedulePage> {
                               ));
                         },
                         images: AppImages.iconNote,
-                        text: 'Chát ngay',
+                        text: 'Chat ngay',
                       ),
                       SizedBox(width: 16.w, height: 0.0),
                       ButtonCircleWidge(

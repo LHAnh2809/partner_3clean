@@ -274,7 +274,7 @@ class _ConfirmedDescriptionWidgetState
                       JobDetailsWidget(
                         image: AppImages.iconMoneyDollarCircle,
                         color: AppColors.kGray400Color,
-                        text: widget.model!.payment_methods == 2
+                        text: widget.model!.paymentMethods == 2
                             ? "Thanh toán qua ví 3Clean"
                             : 'Thanh toán bằng tiền mặt',
                       ),

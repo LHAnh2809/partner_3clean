@@ -10,6 +10,7 @@ import '../../widgets/custom_svg.dart';
 import '../controllers/finance_controller.dart';
 import '../empty/wallet_empty.dart';
 import '../transaction_history/transaction_history.dart';
+import '../week_summary/week_summary_page.dart';
 
 class FinancePage extends StatelessWidget {
   final FinanceController controller;
@@ -108,14 +109,16 @@ class FinancePage extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 16)
                           .r,
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const WeekSummaryPage());
+                    },
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Thông tin chi tiết',
+                          'Tổng kết hàng tuần',
                           style: AppTextStyle.textbodyStyle,
                         ),
                         Row(

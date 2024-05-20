@@ -198,6 +198,7 @@ class Utils {
     if (label == 1) {
       return "Dọn dẹp nhà theo giờ";
     } else if (label == 2) {
+      return "Dọn dẹp nhà định kỳ";
     } else if (label == 3) {
     } else if (label == 4) {
     } else if (label == 5) {
@@ -227,6 +228,19 @@ class Utils {
 
     String hourPart = parts[1].trim();
     return hourPart;
+  }
+
+  static String getHourDateStart(String time, String date) {
+    List<String> parts = time.split(',');
+
+    String hourPart = parts[1].trim();
+    List<String> partss = hourPart.split(' đến ');
+    String hourD = partss[0].trim();
+    String hourC = partss[1].trim();
+    List<String> partsDate = date.split(',');
+    String hourDCD = "$hourD - $hourC, ${partsDate[1]}";
+
+    return hourDCD;
   }
 
   static bool ssHou(String? time, String? date) {

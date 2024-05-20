@@ -217,6 +217,32 @@ class NewJobWidget extends StatelessWidget {
                   image: AppImages.iconLocation2,
                   text: "${model!.location2}, ${model!.location}",
                 ),
+                if (model!.repeatState == 1)
+                  Column(
+                    children: [
+                      SizedBox(width: 0.0, height: 12.h),
+                      JobDetailsWidget(
+                        image: AppImages.iconRepeat,
+                        text: "${model!.repeat}",
+                      ),
+                      if (model!.duration!.isNotEmpty)
+                        Column(
+                          children: [
+                            SizedBox(width: 0.0, height: 12.h),
+                            JobDetailsWidget(
+                              image: AppImages.iconCalendar2Line,
+                              text: "${model!.duration} ",
+                              color: AppColors.kGray400Color,
+                            ),
+                            SizedBox(width: 0.0, height: 12.h),
+                            JobDetailsWidget(
+                              image: AppImages.iconRepeat,
+                              text: "${model!.numberSessions} buổi",
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
                 if (model!.employeeNotes != "")
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

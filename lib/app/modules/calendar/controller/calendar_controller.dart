@@ -4,10 +4,11 @@ import 'package:get/get.dart';
 import 'package:partner_3clean/app/common/util/exports.dart';
 
 import '../../../data/models/calendar_models/calendar.dart';
+import '../../../data/models/cancel_complete_history_models/cancel_complete_history.dart';
 import '../../../data/repository/api_helper.dart';
 
 class CalendarsController extends GetxController
-    with StateMixin<List<Calendar>> {
+    with StateMixin<List<Calendar>>, SingleGetTickerProviderMixin {
   final ApiHelper _apiHelper = Get.find();
 
   @override
@@ -18,6 +19,7 @@ class CalendarsController extends GetxController
 
   List<Calendar> listCalendar = [];
   var previousCurrentIndex = 0.obs;
+
   Future<void> getCalendarr() async {
     try {
       previousCurrentIndex.value = current.value;
@@ -52,8 +54,6 @@ class CalendarsController extends GetxController
     }
   }
 
-  
-
   var orderStatuss = 0.obs;
   var current = 0.obs;
   PageController pageController = PageController();
@@ -72,4 +72,6 @@ class CalendarsController extends GetxController
       debugPrint('Error in getPendingInvoicee: $e');
     }
   }
+
+ 
 }

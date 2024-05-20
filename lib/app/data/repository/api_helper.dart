@@ -126,4 +126,12 @@ abstract class ApiHelper {
   Future<Map<String, dynamic>> putComplete({required String id});
 
   Future<Map<String, dynamic>> postBoViec({required String idID});
+
+  Future<Map<String, dynamic>> getCancelCompleteHistory();
+  Future<Map<String, dynamic>> getStatistics({
+    required String startDate1,
+    required String endDate1,
+    required String startDate2,
+    required String endDate2,
+  });
 }

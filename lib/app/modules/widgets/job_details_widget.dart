@@ -4,18 +4,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/util/exports.dart';
 
-
 class JobDetailsWidget extends StatelessWidget {
   final String image;
-  final String text;
+  final String? text;
   final TextStyle? textStyle;
+  final Widget? textWidget;
   final Color? color;
   const JobDetailsWidget(
       {super.key,
       required this.image,
-      required this.text,
+      this.text,
       this.textStyle,
-      this.color});
+      this.color,
+      this.textWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +34,14 @@ class JobDetailsWidget extends StatelessWidget {
         ),
         SizedBox(width: 12.w, height: 0.0),
         Expanded(
-          child: Text(
-            text,
-            style: textStyle ??
-                AppTextStyle.textsmallStyle.copyWith(
-                  color: AppColors.kGray1000Color,
-                ),
-          ),
+          child: textWidget ??
+              Text(
+                text ?? "",
+                style: textStyle ??
+                    AppTextStyle.textsmallStyle.copyWith(
+                      color: AppColors.kGray1000Color,
+                    ),
+              ),
         ),
       ],
     );

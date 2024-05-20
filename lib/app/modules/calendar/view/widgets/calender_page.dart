@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/util/exports.dart';
@@ -19,7 +20,8 @@ class CalenderPage extends GetView<CalendarsController> {
     return Column(
       children: [
         /// Tab Bar
-        SizedBox(
+        Container(
+          color: AppColors.white,
           width: double.infinity,
           height: 80.h,
           child: ListView.builder(
@@ -98,6 +100,7 @@ class CalenderPage extends GetView<CalendarsController> {
                         Visibility(
                           visible: controller.current == index,
                           child: Container(
+                    
                             width: 5.w,
                             height: 5.h,
                             decoration: const BoxDecoration(
@@ -109,10 +112,10 @@ class CalenderPage extends GetView<CalendarsController> {
                     ));
               }),
         ),
-
         /// MAIN BODY
         Container(
           margin: const EdgeInsets.only(top: 30),
+          color: AppColors.white,
           width: double.infinity,
           height: 520.h,
           child: PageView.builder(

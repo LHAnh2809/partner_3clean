@@ -1,5 +1,5 @@
 class Determined {
-  String? id;
+  String? idID;
   String? lat;
   String? lng;
   String? location;
@@ -7,17 +7,20 @@ class Determined {
   String? workTime;
   String? petNotes;
   int? label;
+  int? repeatState;
+  String? numberSessions;
+  String? duration;
+  String? repeat;
   String? employeeNotes;
   String? roomArea;
-  String? workingDay;
   int? premiumService;
   int? orderStatus;
+  String? workingDay;
+  int? paymentMethods;
   int? price;
-  int? acceptJobCount;
-  int? payment_methods;
 
   Determined(
-      {this.id,
+      {this.idID,
       this.lat,
       this.lng,
       this.location,
@@ -25,17 +28,20 @@ class Determined {
       this.workTime,
       this.petNotes,
       this.label,
+      this.repeatState,
+      this.numberSessions,
+      this.duration,
+      this.repeat,
       this.employeeNotes,
       this.roomArea,
-      this.payment_methods,
       this.premiumService,
       this.orderStatus,
-      this.price,
       this.workingDay,
-      this.acceptJobCount});
+      this.paymentMethods,
+      this.price});
 
   Determined.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    idID = json['idID'];
     lat = json['lat'];
     lng = json['lng'];
     location = json['location'];
@@ -43,19 +49,22 @@ class Determined {
     workTime = json['work_time'];
     petNotes = json['pet_notes'];
     label = json['label'];
+    repeatState = json['repeatState'];
+    numberSessions = json['numberSessions'];
+    duration = json['duration'];
+    repeat = json['repeat'];
     employeeNotes = json['employee_notes'];
     roomArea = json['room_area'];
     premiumService = json['premium_service'];
     orderStatus = json['order_status'];
-    price = json['price'];
     workingDay = json['workingDay'];
-    acceptJobCount = json['accept_job_count'];
-    payment_methods = json['payment_methods'];
+    paymentMethods = json['payment_methods'];
+    price = json['price'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    data['idID'] = this.idID;
     data['lat'] = this.lat;
     data['lng'] = this.lng;
     data['location'] = this.location;
@@ -63,14 +72,17 @@ class Determined {
     data['work_time'] = this.workTime;
     data['pet_notes'] = this.petNotes;
     data['label'] = this.label;
+    data['repeatState'] = this.repeatState;
+    data['numberSessions'] = this.numberSessions;
+    data['duration'] = this.duration;
+    data['repeat'] = this.repeat;
     data['employee_notes'] = this.employeeNotes;
     data['room_area'] = this.roomArea;
     data['premium_service'] = this.premiumService;
     data['order_status'] = this.orderStatus;
-    data['price'] = this.price;
     data['workingDay'] = this.workingDay;
-    data['payment_methods'] = this.payment_methods;
-    data['accept_job_count'] = this.acceptJobCount;
+    data['payment_methods'] = this.paymentMethods;
+    data['price'] = this.price;
     return data;
   }
 }
