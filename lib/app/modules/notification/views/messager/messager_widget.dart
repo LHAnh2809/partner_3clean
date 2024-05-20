@@ -65,12 +65,18 @@ class MessagerWidget extends StatelessWidget {
                 ],
               ),
             if (model.image != "")
-              ClipRRect(
-                child: Image.network(
-                  model.image ?? '',
-                  width: 48.w,
-                  height: 48.h,
-                  fit: BoxFit.cover,
+              Container(
+                width: 48.w,
+                height: 48.h,
+                decoration: BoxDecoration(
+                  color: AppColors.kGray200Color,
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                      model.image.toString(),
+                    ),
+                  ),
                 ),
               ),
             SizedBox(width: 8.w),
