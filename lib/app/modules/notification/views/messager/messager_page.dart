@@ -36,7 +36,7 @@ class _MessagerPageState extends State<MessagerPage> {
         child: controller.obx(
           (state) {
             return ListView.separated(
-              shrinkWrap: true,
+              // shrinkWrap: true,
               // physics: const NeverScrollableScrollPhysics(),
               itemCount: state?.length ?? 0,
               itemBuilder: (BuildContext context, int index) {

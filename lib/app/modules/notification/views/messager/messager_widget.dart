@@ -108,22 +108,22 @@ class MessagerWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
-                        width: 66.w,
-                        height: 20.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16).r,
-                          color: AppColors.kGray100Color,
-                        ),
-                        child: Center(
-                          child: Text(
-                            Strings.closed,
-                            style: AppTextStyle.textsmallStyle12.copyWith(
-                              color: AppColors.kGray500Color,
-                            ),
-                          ),
-                        ),
-                      ),
+                      // Container(
+                      //   width: 66.w,
+                      //   height: 20.h,
+                      //   decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.circular(16).r,
+                      //     color: AppColors.kGray100Color,
+                      //   ),
+                      //   child: Center(
+                      //     child: Text(
+                      //       Strings.closed,
+                      //       style: AppTextStyle.textsmallStyle12.copyWith(
+                      //         color: AppColors.kGray500Color,
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ],
