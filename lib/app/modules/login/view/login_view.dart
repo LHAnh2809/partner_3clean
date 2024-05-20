@@ -109,7 +109,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                       child: LoadingAnimationWidget.threeArchedCircle(
                         color: AppColors.white,
-                        size: 50.r,
+                        size: 30.r,
                       ),
                     ),
                 ],

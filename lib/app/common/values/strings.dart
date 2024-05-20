@@ -1,6 +1,7 @@
 class Strings {
   static const String nameApp = "3Clean";
-  static const String slogen = "Việc nhà cứ để đó,\nmọi thứ có $nameApp lo";
+  static const String slogen =
+      "Chào mừng đến với 3Clean.\n Nhiều công việc hấp dẫn đang chờ bạn";
   static const String plsLogin = "Vui lòng đăng nhập để tiếp tục";
   static const String notAccount = 'Bạn không có tài khoản?';
   static const String referralCode = 'Mã giới thiệu (nếu có)';

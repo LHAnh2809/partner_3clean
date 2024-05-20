@@ -21,6 +21,12 @@ class SplashView extends GetView<SplashController> {
                 AppImages.logo3Clean,
                 height: 70.h,
                 width: 200.w,
+                color: AppColors.kPurplePurpleColor,
+              ),
+              SizedBox(width: 0.0, height: 16.h),
+              Text(
+                'Dành cho nhân viên',
+                style: AppTextStyle.largeBodyStyle,
               ),
               SizedBox(width: 0.0, height: 64.h),
               SvgPicture.asset(
@@ -30,8 +36,9 @@ class SplashView extends GetView<SplashController> {
               ),
               SizedBox(width: 0.0, height: 64.h),
               Text(
+                textAlign: TextAlign.center,
                 Strings.slogen,
-                style: AppTextStyle.largeBodyStyle,
+                style: AppTextStyle.lableBodyStyle,
               )
             ],
           ),

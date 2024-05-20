@@ -327,13 +327,23 @@ class _DetailedWorkSchedulePageState extends State<DetailedWorkSchedulePage> {
                     children: [
                       ButtonCircleWidge(
                         onTap: () {
-                          Get.to(() => ChatView(
-                                name: widget.model.nameUser.toString(),
-                                image: widget.model.imageU.toString(),
-                                id: widget.model.idU.toString(),
-                                numberPhone:
-                                    widget.model.phoneNumber.toString(),
-                              ));
+                          widget.controller
+                              .postCreateChatt(widget.model.idU.toString())
+                              .then(
+                                (value) => Get.to(
+                                  () => widget.controller.idPC == ""
+                                      ? const SizedBox.shrink()
+                                      : ChatView(
+                                          idPC: widget.controller.idPC,
+                                          name:
+                                              widget.model.nameUser.toString(),
+                                          image: widget.model.imageU.toString(),
+                                          id: widget.model.idU.toString(),
+                                          numberPhone: widget.model.phoneNumber
+                                              .toString(),
+                                        ),
+                                ),
+                              );
                         },
                         images: AppImages.iconNote,
                         text: 'Chat ngay',

@@ -20,6 +20,8 @@ class ApiHelperImpl implements ApiHelper {
 
       String viewValue = jobData['IP'];
       await Storage.saveValue('ip', viewValue);
+      String? ip = Storage.getValue<String>('ip');
+      print('IP: $ip');
       String apiUrll = 'http://$viewValue:8000/api/v1';
       await Storage.saveValue('apiUrl', apiUrll);
     } else {
@@ -393,7 +395,7 @@ class ApiHelperImpl implements ApiHelper {
   @override
   Future<Map<String, dynamic>> getUsers() async {
     return await ApiErrorHandler.handleError(() async {
-      final url = '$apiUrl/get-user/';
+      final url = '$apiUrl/partner/get-user/';
       String? accessToken = Storage.getValue<String>('access_token');
       final response = await http
           .get(
@@ -1025,6 +1027,78 @@ class ApiHelperImpl implements ApiHelper {
         return data;
       } else {
         throw Exception('Bỏ công việc thất bại');
+      }
+    });
+  }
+
+  @override
+  Future<Map<String, dynamic>> postCreateChat({
+    required String id,
+  }) async {
+    return await ApiErrorHandler.handleError(() async {
+      final url = '$apiUrl/create-chat?id_user=$id';
+
+      String? accessToken = Storage.getValue<String>('access_token');
+
+      final response = await http
+          .post(
+            Uri.parse(url),
+            headers: getHeaders(accessToken!),
+          )
+          .timeout(myTimeout);
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
+        return data;
+      } else {
+        throw Exception('tạo tin nhắn thất bại');
+      }
+    });
+  }
+
+  @override
+  Future<Map<String, dynamic>> getChat({
+    required String id,
+  }) async {
+    return await ApiErrorHandler.handleError(() async {
+      final url = '$apiUrl/get-chat?id=$id';
+
+      String? accessToken = Storage.getValue<String>('access_token');
+
+      final response = await http
+          .get(
+            Uri.parse(url),
+            headers: getHeaders(accessToken!),
+          )
+          .timeout(myTimeout);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        return data;
+      } else {
+        throw Exception('Get tin nhắn thất bại');
+      }
+    });
+  }
+
+  @override
+  Future<Map<String, dynamic>> getPhongChat() async {
+    return await ApiErrorHandler.handleError(() async {
+      final url = '$apiUrl/partner/get-phong-chat/';
+      String? accessToken = Storage.getValue<String>('access_token');
+      final response = await http
+          .get(
+            Uri.parse(url),
+            headers: getHeaders(accessToken!),
+          )
+          .timeout(myTimeout);
+
+      if (response.statusCode == 200) {
+        final jsonResponse = json.decode(response.body);
+
+        return jsonResponse;
+      } else {
+        throw Exception('Lấy dữ liệu thất bại');
       }
     });
   }

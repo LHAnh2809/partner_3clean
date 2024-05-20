@@ -77,7 +77,7 @@ class TextFieldWidgetState extends State<TextFieldWidget> {
           validator: widget.validator,
           onTap: widget.onTap,
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.all(12).r,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12).r,
             filled: true,
             hintStyle: AppTextStyle.textsmallStyle.copyWith(
                 fontSize: Dimens.fontSize16, color: AppColors.kBlackText),

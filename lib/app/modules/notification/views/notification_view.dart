@@ -4,6 +4,7 @@ import 'package:partner_3clean/app/modules/notification/exports.dart';
 import 'package:partner_3clean/app/modules/notification/views/calendar/calendar_page.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../common/util/exports.dart';
+import 'messager/messager_page.dart';
 
 class NotificationView extends GetView<NotificationController> {
   const NotificationView({Key? key}) : super(key: key);
@@ -61,9 +62,7 @@ class NotificationView extends GetView<NotificationController> {
                   labelColor: AppColors.white,
                   tabs: [
                     _buildTab(Strings.texting, 0),
-                    _buildTab(Strings.calendar, 1),
-                    _buildTab(Strings.company, 2),
-                    _buildTab(Strings.promotion, 3),
+                    _buildTab(Strings.company, 1),
                   ],
                 )),
           ),
@@ -72,32 +71,13 @@ class NotificationView extends GetView<NotificationController> {
               controller: controller.tabController,
               physics: const NeverScrollableScrollPhysics(),
               children: const [
-                NotificationWidget(
-                  label: 0,
-                  title: 'Ngô Vũ Thủy Tiên',
-                  content: 'Công việc đã hoàn thành chị nhé',
-                  image: AppImages.iconAvtTest,
-                  time: '',
-                  idIVD: '',
-                  id: '',
-                ),
-                CalendarPage(),
+                MessagerPage(),
                 NotificationWidget(
                   label: 2,
                   title: 'Thay đổi chính sách',
                   content: 'Thay đổi chính sách sử dụng',
                   image: AppImages.iconCompany,
                   color: AppColors.kBlue500Color,
-                  time: '',
-                  idIVD: '',
-                  id: '',
-                ),
-                NotificationWidget(
-                  label: 3,
-                  title: 'Giảm 25% các dịch vụ',
-                  content: 'Giảm giá tất cả các dịch vụ từ a sang b',
-                  image: AppImages.iconPromotion,
-                  color: AppColors.kYellowColor,
                   time: '',
                   idIVD: '',
                   id: '',

@@ -48,11 +48,6 @@ class ButtonEndowWidget extends StatelessWidget {
                   text,
                   style: AppTextStyle.textsmallStyle60016,
                 ),
-                SizedBox(width: 4.w, height: 0.0),
-                Text(
-                  '($lableđ)',
-                  style: AppTextStyle.textsmallStyle60016,
-                ),
               ],
             ),
             Row(

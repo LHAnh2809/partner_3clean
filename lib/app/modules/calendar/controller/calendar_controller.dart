@@ -57,6 +57,7 @@ class CalendarsController extends GetxController
   var orderStatuss = 0.obs;
   var current = 0.obs;
   PageController pageController = PageController();
+
   void puttComplete(String id) async {
     try {
       final response = await _apiHelper.putComplete(id: id);
@@ -73,5 +74,21 @@ class CalendarsController extends GetxController
     }
   }
 
- 
+  var idPC = "";
+  Future<void> postCreateChatt(String id) async {
+    try {
+      final response = await _apiHelper.postCreateChat(id: id);
+      if (response['detail'] == 0) {
+        idPC = response['id'];
+        debugPrint('Tạo cuộc trò chuyện thành công');
+      } else if (response['detail'] == -1) {
+        idPC = response['id'];
+        debugPrint('Cuộc trò chuyện đã tồn tại');
+      } else {
+        debugPrint('Tạo cuộc trò chuyện thất bại');
+      }
+    } catch (e) {
+      debugPrint('$e');
+    }
+  }
 }
