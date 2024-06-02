@@ -33,6 +33,8 @@
         </intent>
     </queries>
     <application
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
         android:label="partner 3clean"
         android:usesCleartextTraffic="true"
         android:name="${applicationName}"
