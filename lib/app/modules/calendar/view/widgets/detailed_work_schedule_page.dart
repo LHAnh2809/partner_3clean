@@ -2,20 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:partner_3clean/app/modules/calendar/view/widgets/button_circle_widge.dart';
 
 import '../../../../common/util/exports.dart';
+import '../../../../common/util/navigator.dart';
 import '../../../../data/models/calendar_models/jobs.dart';
 import '../../../chat/view/chat_view.dart';
 import '../../../widgets/button_widget.dart';
 import '../../../widgets/custom_appbar_widget.dart';
 import '../../../widgets/custom_svg.dart';
 import '../../../widgets/job_details_widget.dart';
+import '../../../widgets/text_field_widget.dart';
 import '../../controller/calendar_controller.dart';
+import 'cancel_job_widget.dart';
 
 class DetailedWorkSchedulePage extends StatefulWidget {
   final CalendarsController controller;
   final Jobs model;
+
   const DetailedWorkSchedulePage(
       {Key? key, required this.controller, required this.model})
       : super(key: key);
@@ -364,15 +369,27 @@ class _DetailedWorkSchedulePageState extends State<DetailedWorkSchedulePage> {
             ),
             Obx(() => Column(
                   children: [
-                    if (widget.controller.orderStatuss != 4)
-                      if (Utils.ssHou(widget.model.workTime.toString(),
-                              widget.model.workingDay.toString()) ==
-                          false)
+                    // if (widget.controller.orderStatuss != 4)
+                    //   if (Utils.ssHou(widget.model.workTime.toString(),
+                    //           widget.model.workingDay.toString()) ==
+                    //       false)
                         Column(
                           children: [
                             SizedBox(width: 0.0, height: 8.h),
                             ButtonWidget(
-                              onTap: () {},
+                              onTap: () {
+                                showBarModalBottomSheet(
+                                  expand: false,
+                                  context: context,
+                                  // backgroundColor: Colors.transparent,
+                                  builder: (context) => Padding(
+                                    padding: const EdgeInsets.only(
+                                            top: 5, right: 16, left: 16)
+                                        .r,
+                                    child: _LyDoHuyViec(),
+                                  ),
+                                );
+                              },
                               textStyle: AppTextStyle.textButtonStyle
                                   .copyWith(color: AppColors.kRrror600Color),
                               text: 'Xin huỷ việc',
@@ -405,25 +422,274 @@ class _DetailedWorkSchedulePageState extends State<DetailedWorkSchedulePage> {
         child: Obx(
           () => Column(
             children: [
-              // if (Utils.ssHou(
-              //         widget.model.workTime.toString(), widget.model.workingDay.toString()) ==
-              //     true)
-              if (widget.controller.orderStatuss != 4)
+              if (Utils.ssHou(widget.model.workTime.toString(),
+                      widget.model.workingDay.toString()) ==
+                  true)
+                if (widget.controller.orderStatuss != 4)
+                  ButtonWidget(
+                    onTap: () {
+                      widget.controller
+                          .puttComplete(widget.model.idID.toString());
+                    },
+                    text: 'Hoàn tất',
+                    height: 48.h,
+                  ),
+              if (Utils.ssHou(widget.model.workTime.toString(),
+                      widget.model.workingDay.toString()) ==
+                  false)
                 ButtonWidget(
-                  onTap: () {
-                    widget.controller
-                        .puttComplete(widget.model.idID.toString());
-                  },
+                  colorBackGroud: AppColors.kGray200Color,
+                  textStyle: AppTextStyle.textButtonStyle
+                      .copyWith(color: AppColors.kGray1000Color),
+                  onTap: () {},
                   text: 'Hoàn tất',
                   height: 48.h,
                 ),
-              // if (Utils.ssHou(
-              //         widget.model.workTime.toString(), widget.model.workingDay.toString()) ==
-              //     false)
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Column _LyDoHuyViec() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Lý do hủy việc',
+              style: AppTextStyle.textButtonStyle.copyWith(
+                color: AppColors.kGray1000Color,
+              ),
+            ),
+            ButtonWidget(
+              onTap: () {
+                Get.back();
+              },
+              widget: SvgPicture.asset(
+                AppImages.iconClose,
+                width: 24.w,
+                height: 24.h,
+              ),
+              boder: false.obs,
+            ),
+          ],
+        ),
+        SizedBox(height: 16.h),
+        Flexible(
+          fit: FlexFit.loose,
+          child: ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: widget.controller.itemsLiDo.length,
+            itemBuilder: (context, index) {
+              return ButtonWidget(
+                onTap: () {
+                  widget.controller.textLido.value =
+                      widget.controller.itemsLiDo[index];
+                  Get.back();
+                  if (widget.controller.textLido.value == "Lý do khác") {
+                    showBarModalBottomSheet(
+                      expand: false,
+                      context: context,
+                      // backgroundColor: Colors.transparent,
+                      builder: (context) => Padding(
+                        padding:
+                            const EdgeInsets.only(top: 5, right: 16, left: 16)
+                                .r,
+                        child: _LyDoKhac(),
+                      ),
+                    );
+                  } else {
+                    goPresent(children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Thông báo',
+                            style: AppTextStyle.textButtonStyle
+                                .copyWith(color: AppColors.kGray1000Color),
+                          ),
+                          ButtonWidget(
+                            onTap: () {
+                              Get.back();
+                            },
+                            widget: SvgPicture.asset(
+                              AppImages.iconClose,
+                              width: 24.w,
+                              height: 24.h,
+                            ),
+                            boder: false.obs,
+                          )
+                        ],
+                      ),
+                      SizedBox(width: 0.0, height: 25.h),
+                      Text(
+                        ' Bạn có chắc chắn muốn huỷ?',
+                        style: AppTextStyle.textbodyStyle,
+                      ),
+                      SizedBox(width: 0.0, height: 16.h),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ButtonWidget(
+                              onTap: () {
+                                Get.back();
+                              },
+                              colorBackGroud: Colors.white,
+                              text: 'Quay lại',
+                              boder: true.obs,
+                              textStyle: AppTextStyle.textButtonStyle
+                                  .copyWith(color: AppColors.kGray1000Color),
+                            ),
+                          ),
+                          SizedBox(width: 16.w, height: 0.0),
+                          Expanded(
+                            child: ButtonWidget(
+                              onTap: () {
+                                widget.controller.putHuy(widget.model);
+                              },
+                              text: 'Đồng ý',
+                              boder: false.obs,
+                            ),
+                          ),
+                          SizedBox(width: 16.w, height: 0.0),
+                        ],
+                      )
+                    ]);
+                  }
+                },
+                widget: Container(
+                  height: 56.h,
+                  padding: const EdgeInsets.all(16).r,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12).r,
+                    color: AppColors.white,
+                    border: Border.all(
+                      color: AppColors.kGray300Color,
+                    ),
+                  ),
+                  child: Text(
+                    widget.controller.itemsLiDo[index],
+                    style: AppTextStyle.lableBodyStyle.copyWith(
+                      color: AppColors.kGray1000Color,
+                    ),
+                  ),
+                ),
+              );
+            },
+            separatorBuilder: (context, index) => SizedBox(height: 8.h),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Column _LyDoKhac() {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Lý do hủy việc',
+              style: AppTextStyle.textButtonStyle.copyWith(
+                color: AppColors.kGray1000Color,
+              ),
+            ),
+            ButtonWidget(
+              onTap: () {
+                Get.back();
+              },
+              widget: SvgPicture.asset(
+                AppImages.iconClose,
+                width: 24.w,
+                height: 24.h,
+              ),
+              boder: false.obs,
+            ),
+          ],
+        ),
+        SizedBox(height: 32.h),
+        TextFieldWidget(
+          controller: widget.controller.textEditNoteKhac,
+          obsNhapText: false,
+          hintText: 'Nhập lý do hủy',
+        ),
+        SizedBox(height: 16.h),
+        ButtonWidget(
+          onTap: () {
+            if (widget.controller.textEditNoteKhac.text.isEmpty) {
+              return Utils.showSnackbar(
+                message: 'Vui lòng nhập lý do trước khi hủy',
+                icon: AppImages.iconCircleCheck,
+                colors: AppColors.kRrror600Color,
+              );
+            } else {
+              goPresent(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Thông báo',
+                      style: AppTextStyle.textButtonStyle
+                          .copyWith(color: AppColors.kGray1000Color),
+                    ),
+                    ButtonWidget(
+                      onTap: () {
+                        Get.back();
+                      },
+                      widget: SvgPicture.asset(
+                        AppImages.iconClose,
+                        width: 24.w,
+                        height: 24.h,
+                      ),
+                      boder: false.obs,
+                    )
+                  ],
+                ),
+                SizedBox(width: 0.0, height: 25.h),
+                Text(
+                  ' Bạn có chắc chắn muốn huỷ?',
+                  style: AppTextStyle.textbodyStyle,
+                ),
+                SizedBox(width: 0.0, height: 16.h),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ButtonWidget(
+                        onTap: () {
+                          Get.back();
+                        },
+                        colorBackGroud: Colors.white,
+                        text: 'Quay lại',
+                        boder: true.obs,
+                        textStyle: AppTextStyle.textButtonStyle
+                            .copyWith(color: AppColors.kGray1000Color),
+                      ),
+                    ),
+                    SizedBox(width: 16.w, height: 0.0),
+                    Expanded(
+                      child: ButtonWidget(
+                        onTap: () {
+                          widget.controller.putHuy(widget.model);
+                        },
+                        text: 'Đồng ý',
+                        boder: false.obs,
+                      ),
+                    ),
+                    SizedBox(width: 16.w, height: 0.0),
+                  ],
+                )
+              ]);
+            }
+          },
+          text: 'Đồng ý',
+        ),
+      ],
     );
   }
 }

@@ -25,7 +25,7 @@ class WaitConfirmationControlelr extends GetxController
 
   void _getCurrentLocation() async {
     try {
-          change(null, status: RxStatus.loading());
+      change(null, status: RxStatus.loading());
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
 
@@ -80,8 +80,10 @@ class WaitConfirmationControlelr extends GetxController
         Get.back();
         isLoading.value = false;
         await gettWaitConfirmation();
-        return Utils.showSnackbar('Huỷ công việc ứng tuyển thành công',
-            AppImages.iconCircleCheck, AppColors.kRrror600Color);
+        return Utils.showSnackbar(
+            message: 'Huỷ công việc ứng tuyển thành công',
+            icon: AppImages.iconCircleCheck,
+            colors: AppColors.kRrror600Color);
       } else {
         isLoading.value = false;
       }

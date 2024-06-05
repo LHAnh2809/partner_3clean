@@ -143,4 +143,10 @@ abstract class ApiHelper {
     required String id,
   });
   Future<Map<String, dynamic>> getPhongChat();
+  Future<Map<String, dynamic>> putCancelJob(
+      {required String idU,
+      required int Stt,
+      required int price,
+      required String idInvoiceDetails,
+      required String reasonCancellation});
 }

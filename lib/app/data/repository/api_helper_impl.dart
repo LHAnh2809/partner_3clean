@@ -1102,4 +1102,32 @@ class ApiHelperImpl implements ApiHelper {
       }
     });
   }
+
+  @override
+  Future<Map<String, dynamic>> putCancelJob(
+      {required String idU,
+      required int Stt,
+      required int price,
+      required String idInvoiceDetails,
+      required String reasonCancellation}) async {
+    return await ApiErrorHandler.handleError(() async {
+      String? accessToken = Storage.getValue<String>('access_token');
+      final url =
+          '$apiUrl/put-cancel-job/?idU=$idU&reason_cancellation=$reasonCancellation&stt=$Stt&price=$price&idInvoiceDetails=$idInvoiceDetails';
+      final response = await http
+          .put(
+            Uri.parse(url),
+            headers: getHeaders(accessToken!),
+          )
+          .timeout(myTimeout);
+
+      if (response.statusCode == 200) {
+        final jsonResponse = json.decode(response.body);
+
+        return jsonResponse;
+      } else {
+        throw Exception('Sửa địa chỉ mặc định thất bại');
+      }
+    });
+  }
 }

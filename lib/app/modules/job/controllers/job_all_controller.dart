@@ -95,8 +95,8 @@ class JobAllController extends GetxController with StateMixin<List<JobAll>> {
         getJobAll();
         Get.back();
         Get.back();
-        return Utils.showSnackbar('Ứng tuyển công việc thành công',
-            AppImages.iconCircleCheck, AppColors.kSuccess600Color);
+        return Utils.showSnackbar(message: 'Ứng tuyển công việc thành công',
+           icon:  AppImages.iconCircleCheck,colors:  AppColors.kSuccess600Color);
       }
     } catch (e) {
       isLoading.value = false;
@@ -121,8 +121,8 @@ class JobAllController extends GetxController with StateMixin<List<JobAll>> {
         getJobAll();
         Get.back();
         Get.back();
-        return Utils.showSnackbar('Bỏ qua công việc thành công',
-            AppImages.iconCircleCheck, AppColors.kSuccess600Color);
+        return Utils.showSnackbar(message: 'Bỏ qua công việc thành công',
+         icon:    AppImages.iconCircleCheck,colors:  AppColors.kSuccess600Color);
       }
     } catch (e) {
       isLoading.value = false;

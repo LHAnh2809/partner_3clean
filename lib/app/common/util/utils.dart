@@ -355,14 +355,27 @@ class Utils {
     }
   }
 
-  static void showSnackbar(
+  static void showSnackbar({
     String? message,
+    String? messageBT,
     String? icon,
     Color? colors,
-  ) {
+    bool? showButton = false,
+    void Function()? onPressed,
+  }) {
     closeSnackbar();
 
     Get.rawSnackbar(
+        mainButton: showButton == true
+            ? TextButton(
+                onPressed: onPressed,
+                child: Text(
+                  messageBT!,
+                  style: AppTextStyle.textbodyStyle
+                      .copyWith(color: AppColors.kYellowColor),
+                ),
+              )
+            : null,
         icon: icon != null
             ? SvgPicture.asset(
                 icon,
@@ -385,10 +398,10 @@ class Utils {
             offset: const Offset(0, 4),
           ),
         ],
-        backgroundColor: AppColors.white,
+        backgroundColor: AppColors.kGray1000Color.withOpacity(0.7),
         messageText: Text(
           message!,
-          style: AppTextStyle.textsmallStyle,
+          style: AppTextStyle.textsmallStyle.copyWith(color: AppColors.white),
         ),
         snackPosition: SnackPosition.BOTTOM,
         margin: const EdgeInsets.only(left: 16, right: 16, bottom: 50).r,

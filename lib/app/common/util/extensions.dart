@@ -112,7 +112,11 @@ extension FutureExt<T> on Future<Response<T>?> {
       onTimeout: () {
         Utils.closeDialog();
 
-        Utils.showSnackbar(Strings.noConnection,"",AppColors.kGray1000Color);
+        Utils.showSnackbar(
+          message: Strings.noConnection,
+          icon: "",
+          colors: AppColors.kGray1000Color,
+        );
 
         throw ApiError(
           type: ErrorType.connectTimeout,
